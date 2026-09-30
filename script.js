@@ -1,49 +1,4 @@
 const PHONE = '5554999102656';
-// Decorative comparison rows reveal once and do not behave like form controls.
-const experienceSection = document.querySelector('.experience-section');
-if (experienceSection && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const experienceObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('experience-visible');
-      experienceObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-  experienceSection.querySelectorAll('.experience-header, .experience-card, .experience-row').forEach((block) => {
-    block.classList.add('experience-enter');
-    experienceObserver.observe(block);
-  });
-}
-// Process elements enter once; HTML remains visible without JS or with reduced motion.
-const processSection = document.querySelector('.process-section');
-if (processSection && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const processObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('process-visible');
-      processObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-  processSection.querySelectorAll('.process-header, .process-card, .process-waves, .process-differential').forEach((block) => {
-    block.classList.add('process-enter');
-    processObserver.observe(block);
-  });
-}
-// Animate only when each clarity block enters the viewport; content stays visible without JS.
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const clarityObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      clarityObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.clarity-section .intro-grid h2, .clarity-art, .clarity-section .story-panel, .clarity-section .story-steps li').forEach((block, index) => {
-    block.classList.add('clarity-reveal');
-    block.style.setProperty('--clarity-delay', `${index > 2 ? (index - 3) * 70 : 0}ms`);
-    clarityObserver.observe(block);
-  });
-}
 document.querySelectorAll('[data-contact]').forEach((link) => {
   const message = link.dataset.message || 'Olá! Quero melhorar minha presença digital.';
   link.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
@@ -59,39 +14,6 @@ questions.forEach((question) => {
   });
 });
 
-// Reveal connection elements individually so mobile cards animate as they appear.
-const connection = document.querySelector('.connection-section');
-if (connection && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('connection-revealed');
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-  connection.querySelectorAll('.split-heading, .channel-card, .connection-flow').forEach((block, index) => {
-    block.style.setProperty('--connection-delay', window.matchMedia('(min-width: 1101px)').matches && index > 0 && index < 5 ? `${(index - 1) * 90}ms` : '0ms');
-    observer.observe(block);
-  });
-}
-
-// Reveal each services block once, including cards further down on mobile.
-const services = document.querySelector('.services-section');
-if (services && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const reveal = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('services-revealed');
-      reveal.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-  services.querySelectorAll('.center-heading, .service-card').forEach((block, index) => {
-    block.classList.add('services-enter');
-    block.addEventListener('animationend', () => block.classList.remove('services-enter', 'services-revealed'), { once: true });
-    block.style.setProperty('--services-delay', `${index ? ((index - 1) % 2) * 80 : 0}ms`);
-    reveal.observe(block);
-  });
-}
 // Fictional starter data. Replace these records with approved reviews before publication.
 // Keep rendering independent of the data source so a future API/CMS can supply this array.
 const testimonials = [
@@ -280,4 +202,100 @@ const testimonials = [
   }
   sync();
   schedule();
+})();
+
+// Shared motion direction. Content is never hidden while waiting for JavaScript.
+(() => {
+  if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = window.matchMedia('(max-width: 760px)');
+  const groups = [
+    ['.hero-copy > *', 'rise'],
+    ['.clarity-section .intro-grid > *, .story-heading, .story-steps li', 'rise'],
+    ['.connection-section .split-heading, .channel-card, .connection-flow', 'rise'],
+    ['.services-section .center-heading, .service-card, .service-summary', 'rise'],
+    ['.transformation-copy > *, .decision-steps li, .conversation-message', 'rise'],
+    ['.process-header, .process-card, .process-differential', 'rise'],
+    ['.experience-header, .experience-card', 'rise'],
+    ['.testimonials-header, .testimonials-carousel', 'rise'],
+    ['.audit-copy > *, .audit-list li', 'rise'],
+    ['.manifesto-copy > *', 'rise'],
+    ['.faq-intro > *, .faq-list details', 'rise'],
+    ['.final-heading-row, .final-copy > *, .final-aside > *', 'rise'],
+    ['.final-footer-grid > *, .final-footer-bottom', 'rise'],
+    ['.digital-journey, .final-showcase', 'depth']
+  ];
+  const targets = new Map();
+  groups.forEach(([selector, kind]) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      targets.set(element, { kind, delay: (index % 3) * 65 });
+    });
+  });
+  const played = new Set();
+  const active = new Map();
+  function cancel(element) {
+    active.get(element)?.cancel();
+    active.delete(element);
+  }
+  function enter(element) {
+    if (reduced.matches || document.hidden || played.has(element)) return;
+    played.add(element);
+    // Keyboard focus must remain stable and immediately readable.
+    if (element.contains(document.activeElement)) return;
+    cancel(element);
+    const { kind, delay } = targets.get(element);
+    const distance = mobile.matches ? 10 : kind === 'depth' ? 24 : 18;
+    const frames = [
+      { opacity: .25, translate: `0 ${distance}px`, ...(kind === 'depth' ? { scale: .975 } : {}) },
+      { opacity: 1, translate: '0 0', ...(kind === 'depth' ? { scale: 1 } : {}) }
+    ];
+    const animation = element.animate(frames, {
+      duration: mobile.matches ? 460 : kind === 'depth' ? 850 : 640,
+      delay: mobile.matches ? 0 : delay,
+      easing: 'cubic-bezier(.22, 1, .36, 1)',
+      fill: 'backwards'
+    });
+    active.set(element, animation);
+    animation.onfinish = () => { if (active.get(element) === animation) active.delete(element); };
+  }
+  const entrance = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) enter(entry.target); });
+  }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
+  // Rearm only after leaving a generous buffer, avoiding repeated flashes at an edge.
+  const departure = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) { played.delete(entry.target); cancel(entry.target); }
+    });
+  }, { threshold: 0, rootMargin: '160px 0px' });
+  function configure() {
+    entrance.disconnect();
+    departure.disconnect();
+    active.forEach(animation => animation.cancel());
+    active.clear();
+    played.clear();
+    if (reduced.matches) return;
+    targets.forEach((_, element) => { entrance.observe(element); departure.observe(element); });
+  }
+  reduced.addEventListener('change', configure);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { active.forEach(animation => animation.cancel()); active.clear(); }
+  });
+  document.addEventListener('focusin', event => {
+    targets.forEach((_, element) => { if (element.contains(event.target)) cancel(element); });
+  });
+  document.querySelectorAll('.faq-list details').forEach(detail => {
+    detail.addEventListener('toggle', () => {
+      const answer = detail.querySelector('p');
+      if (!answer) return;
+      cancel(answer);
+      if (!detail.open || reduced.matches) return;
+      const animation = answer.animate([
+        { opacity: .35, translate: '0 -4px' },
+        { opacity: 1, translate: '0 0' }
+      ], { duration: 240, easing: 'ease-out' });
+      active.set(answer, animation);
+      animation.onfinish = () => { if (active.get(answer) === animation) active.delete(answer); };
+    });
+  });
+  configure();
 })();
