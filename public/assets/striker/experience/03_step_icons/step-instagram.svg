@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+      <defs>
+        <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity=".98"/>
+          <stop offset=".55" stop-color="#EEF9FF" stop-opacity=".94"/>
+          <stop offset="1" stop-color="#D9F1FF" stop-opacity=".92"/>
+        </linearGradient>
+        <linearGradient id="acc" x1="0" x2="1">
+          <stop offset="0" stop-color="#20B8F5"/>
+          <stop offset="1" stop-color="#0A84FF"/>
+        </linearGradient>
+        <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#4BADE8" flood-opacity=".18"/>
+        </filter>
+        <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5"/>
+        </filter>
+      </defs>
+      <circle cx="64" cy="64" r="48" fill="url(#glass)" stroke="#FFFFFF" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="64" cy="64" r="51" fill="none" stroke="#8FE9FF" stroke-opacity=".35" stroke-width="3"/>
+
+  <rect x="42" y="42" width="44" height="44" rx="12" fill="none" stroke="url(#acc)" stroke-width="6"/>
+  <circle cx="64" cy="64" r="10" fill="none" stroke="url(#acc)" stroke-width="5"/>
+  <circle cx="79" cy="49" r="4" fill="#0A84FF"/>
+
+    </svg>

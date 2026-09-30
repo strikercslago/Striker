@@ -8,7 +8,7 @@ http.createServer((req, res) => {
   try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
   catch { res.writeHead(400); return res.end(); }
   if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405); return res.end(); }
-  const asset = /^\/assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.(?:png|jpg|jpeg|webp|svg|woff2|ico)$/.test(pathname);
+  const asset = /^\/(?:public\/)?assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.(?:png|jpg|jpeg|webp|svg|woff2|ico)$/.test(pathname);
   if (!['/', '/index.html', '/styles.css', '/script.js'].includes(pathname) && !asset) { res.writeHead(404); return res.end('Not found'); }
   const file = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
   if (!file.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
