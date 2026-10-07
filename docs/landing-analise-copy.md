@@ -1,139 +1,189 @@
 # Copy final — /analise
 
-Pular para o conteúdo
-Striker
-Estrutura digital para negócios
+Para empresas que querem ser encontradas e valorizadas
 
-ANÁLISE DA PRESENÇA DIGITAL
+Seu negócio jáentrega valor.É hora de mostrarisso no digital.
 
-Sua empresa
-entrega valor.
-Quem encontra
-você percebe isso?
+Solicite uma análise da sua presença digital e descubra o que pode estar dificultando o caminho entre conhecer sua empresa e falar com você.
 
-Analisamos como sua empresa aparece no digital e o que pode tornar mais fácil entender seu valor e entrar em contato.
+Quero analisar minha empresa↗
 
-Solicitar minha análise
-↗
+Mais clareza sobre como sua empresa é percebida
 
-Pelo WhatsApp. Mesmo que você ainda não tenha site.
+Um olhar sobre Google, Instagram, site e contato
 
-PELO OLHAR DO SEU CLIENTE
-↗
+Prioridades para saber por onde começar
 
-Do primeiro olhar
-à primeira conversa.
+Estratégia antes da solução. Clareza antes do contato.
 
-01
-GOOGLE · DESCOBERTA
-“Encontro sua empresa?”
-02
-INSTAGRAM · CONFIANÇA
-“Ela faz sentido para mim?”
-03
-SITE OU PÁGINA · CLAREZA
-“Entendo o que ela oferece?”
-04
-WHATSAPP · CONVERSA
-“Sei como dar o próximo passo.”
+Descubra o quepode ficar melhor.
 
-A análise olha para a conexão entre esses pontos.
+O primeiro passo é uma conversa com a Striker.
 
-Ser encontrada. Ser entendida. Ser valorizada.
-Entenda a análise
-↓
-01 / O QUE OBSERVAMOS
-CLAREZA ANTES DO CONTATO
-Seu cliente não deveria precisar investigar sua empresa.
+01Conte o que sua empresa faz.
 
-Informações espalhadas, serviços pouco claros ou um contato difícil de encontrar podem interromper o interesse.
+02Envie seu Instagram ou site, se tiver.
 
-Olhamos para a experiência de quem está conhecendo seu negócio agora.
+03Vamos entender seu cenário.
 
-01
-É fácil encontrar você?
+Solicitar minha análise↗
 
-Presença no Google, informações do negócio e conexão com seus outros canais.
+Você será direcionado ao nosso WhatsApp.Não precisa ter um site para começar.
 
-↗
-02
-Seu valor fica claro?
+A análise orienta o próximo passo.A decisão de seguir é sua.
 
-Apresentação no Instagram, clareza dos serviços e sinais de confiança no site, quando houver.
+O olhar da Striker
 
-↗
-03
-É simples falar com você?
+Seu cliente não deveria precisar investigar sua empresa para entender por que escolher você.
 
-Leitura no celular, facilidade de navegação e caminho até o WhatsApp.
+Você conhece o valor do seu trabalho. Mas quem chega pelo Google ou Instagram ainda está formando essa opinião.
 
-↗
+É esse caminho que a Striker ajuda a organizar: da primeira impressão à primeira conversa.
 
-Sua empresa já faz um bom trabalho. O digital precisa ajudar o cliente a perceber.
+Solicitar minha análise↗
 
-02 / DA ANÁLISE À DIREÇÃO
-UM PRÓXIMO PASSO SIMPLES
-Entenda o que melhorar.
-Saiba por onde começar.
+Para quem é essa análise
 
-A Striker ajuda empresas a organizar sua presença digital para comunicar valor e facilitar novas oportunidades.
+Seu negócio evoluiu.Seu digital acompanhou?
 
-01
-Conte sobre sua empresa.
+Se você já atende clientes e quer apresentar melhor sua empresa, este pode ser o seu próximo passo.
 
-No WhatsApp, envie o nome do negócio e seu Instagram ou site, se tiver.
+Seu negócio é real.
 
-02
-Olhamos para o caminho.
+Você já entrega um bom serviço, mas sua apresentação não mostra tudo isso.
 
-Entendemos seu contexto e avaliamos como seus canais apresentam a empresa e conduzem ao contato.
+Você já está nas redes.
 
-03
+O Instagram está ativo, mas os serviços e o próximo passo nem sempre ficam claros.
+
+Os canais estão dispersos.
+
+O cliente precisa juntar informações para entender sua empresa e falar com você.
+
+Você quer mais direção.
+
+Antes de investir em uma solução, quer entender o que merece atenção.
+
+Quero entender meu cenário↗
+
+O que a Striker analisa
+
+Uma presença digital conectada.Do primeiro olhar ao contato.
+
+Não olhamos apenas para uma página. Observamos como cada canal ajuda seu cliente a dar o próximo passo.
+
+Serencontrada.
+
+Seu negócio aparece quando alguém procura?
+
+Olhamos para as informações públicas da empresa, a apresentação no Google e a conexão com seus outros canais.
+
+Informações do negócio
+
+Apresentação na busca
+
+Próximo passo claro
+
+Gerarconfiança.
+
+Seu perfil ajuda a entender o que você faz?
+
+Avaliamos se a apresentação, os serviços e o caminho do perfil até o contato ajudam quem acabou de conhecer sua empresa.
+
+Clareza da bio
+
+Apresentação dos serviços
+
+Caminho do link ao contato
+
+Mostrar seuvalor.
+
+O cliente entende por que escolher você?
+
+Quando existe um site, observamos a organização das informações, a leitura no celular e os sinais de confiança. Se não existe, avaliamos essa necessidade.
+
+Serviços bem explicados
+
+Experiência no celular
+
+Argumentos de confiança
+
+Facilitar aconversa.
+
+É simples dar o próximo passo?
+
+Verificamos como a pessoa sai dos seus canais e chega ao atendimento: links, chamadas para ação e possíveis barreiras antes da primeira mensagem.
+
+Links de contato
+
+Chamadas para ação
+
+Continuidade da jornada
+
+Conversar sobre minha análise↗
+
+Uma análise. Um caminho mais claro.
+
+Antes de pensar emum novo site,entenda o queseu negócio precisa.
+
+A melhor solução começa pelo contexto da sua empresa. A conversa ajuda a separar o que já funciona do que pode melhorar.
+
+Dar o primeiro passo↗
+
+01Você apresenta sua empresa.Compartilhe os canais que já usa e o que gostaria de melhorar.
+
+Você apresenta sua empresa.
+
+Compartilhe os canais que já usa e o que gostaria de melhorar.
+
+02Olhamos pela perspectiva do cliente.Avaliamos clareza, confiança, experiência no celular e facilidade de contato.
+
+Olhamos pela perspectiva do cliente.
+
+Avaliamos clareza, confiança, experiência no celular e facilidade de contato.
+
+03Conversamos sobre prioridades.Você entende os pontos de atenção e decide como seguir. Se uma solução fizer sentido, falamos sobre ela.
+
 Conversamos sobre prioridades.
 
-Você entende os pontos de atenção e as oportunidades de melhoria para decidir o próximo passo.
+Você entende os pontos de atenção e decide como seguir. Se uma solução fizer sentido, falamos sobre ela.
 
-↗
+Dúvidas frequentes
 
-O ponto de partida é o seu negócio. A necessidade de um site ou de outra solução depende do que a análise mostrar.
+Mais clareza.Desde o começo.
 
-03 / VAMOS OLHAR PARA SUA EMPRESA?
-
-Um olhar de fora.
-Mais clareza para
-o próximo passo.
-
-Descubra o que sua presença digital comunica hoje e o que pode ficar melhor.
-
-Solicitar minha análise
-↗
-
-A conversa começa no WhatsApp da Striker.
-
-ANTES DE COMEÇAR
-
-Preciso ter um site?
-+
+Preciso ter um site para solicitar a análise?+
 
 Não. Podemos começar pelos canais que sua empresa já usa, como Instagram e Google, e avaliar se falta um espaço mais claro para apresentar seus serviços.
 
-O que preciso enviar?
-+
+Essa análise faz sentido para minha empresa?+
 
-O nome da empresa, o que ela faz e os links dos seus canais, se tiver. O restante alinhamos na conversa. Não envie senhas ou acessos.
+Ela é voltada a negócios que já atendem clientes e querem melhorar sua apresentação digital. Na conversa, entendemos seu segmento, seus canais e seu momento.
 
-Vou precisar contratar um site?
-+
+O que preciso enviar?+
+
+O nome da empresa, o que ela faz e os links dos seus canais, se tiver. Não é necessário compartilhar senhas ou acessos para essa conversa inicial.
+
+Vou precisar contratar um site?+
 
 Solicitar a análise não significa contratar um site. Primeiro entendemos o cenário. Se uma solução fizer sentido, conversamos sobre ela e você decide como seguir.
 
-Striker
+A análise garante mais vendas?+
 
-Presença digital à altura do seu negócio.
+Não. O objetivo é identificar oportunidades e barreiras na sua presença digital. Resultados comerciais também dependem da oferta, do público, do atendimento e da execução das melhorias.
 
-(54) 99910-2656
-↗
+Sua empresa já entrega valor
+
+Vamos fazer o digitalmostrar isso também?
+
+Comece entendendo o que sua presença digital comunica hoje.
+
+Solicitar minha análise↗
+
+Uma conversa sobre sua empresa. Direto no WhatsApp.
 
 Mensagem do WhatsApp:
 
 Olá! Vim pela página de análise da Striker e quero entender o que posso melhorar na presença digital da minha empresa.
+
+Avaliações e logos dependem de material real. Os textos de espaço reservado só aparecem em ?preview=assets.
