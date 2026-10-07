@@ -1,83 +1,62 @@
-# Landing /analise — direção baseada na referência V4
+# /analise — landing oficial da Striker
 
-## Decisão estratégica
+## Fonte e direção
 
-Referência analisada em 07/10/2026: https://lps.v4company.com/assessoria/go-modular-b
+Copy principal: `Copy_Landing_Page_Striker (1).pdf`, fornecida pelo usuário em 07/10/2026. A composição usa o preview aprovado e os dez assets entregues, substituindo a direção anterior baseada na V4. Oferta confirmada: análise gratuita e sem compromisso da presença digital, com conversão pelo WhatsApp.
 
-A página foi inspecionada no navegador em desktop e mobile. Sua sequência observável é: navegação curta; abertura com promessa, benefícios e formulário; endosso com retrato; depoimentos; indicadores de escala; serviços em abas; tecnologia; FAQ. Predominam fundo de marca, painel de captação branco, transições claras arredondadas, títulos com destaques de cor e CTAs frequentes. Não tivemos acesso às métricas da V4, portanto não atribuímos resultados ao layout.
+## Seções
 
-A Striker adota essa gramática visual e narrativa com identidade navy/cyan e texto próprio. A oferta continua sendo uma análise da presença digital, não assessoria de marketing completa. A captação usa um painel de conversa com WhatsApp direto: não solicita faturamento, telefone ou e-mail antes do contato. Isso preserva a baixa fricção para o público do Instagram.
+Hero com smartphone e cards; faixa de canais; percepção antes da conversa com personagem; jornada com cinco ícones; checklist do que é analisado; diagnóstico antes da solução; três respostas; identificação do público; processo; objeção sobre contratação; justificativa da gratuidade; CTA final e FAQ. A narrativa principal do PDF foi preservada, com agrupamento de frases curtas em parágrafos para leitura responsiva.
 
-## Estrutura final
+## Arquivos e isolamento
 
-1. **Abertura:** qualificação do público, headline orientada a valor, três benefícios e painel branco de solicitação. No celular há um CTA antecipado antes dos benefícios.
-2. **Posicionamento e confiança:** argumento da marca ao lado de uma área de retrato/projeto. Sem endosso fictício.
-3. **Provas sociais:** dois espaços para relatos e quatro para logos na prévia. Os dados reais podem ser preenchidos no início do JavaScript. Sem material, o bloco fica oculto na versão normal.
-4. **Para quem é:** quatro situações concretas substituem números de escala que não existem documentados para a Striker.
-5. **Escopo modular:** Google, Instagram, site/página e WhatsApp em abas acessíveis. Cada aba combina arte, pergunta central e pontos observados.
-6. **Processo:** apresentação do negócio, leitura da jornada e conversa sobre prioridades.
-7. **FAQ:** cinco objeções, incluindo ausência de site, adequação e limites de resultado.
-8. **Convite final e rodapé:** mesma ação de WhatsApp, sem caminhos comerciais concorrentes.
+- `analise/index.html`: conteúdo oficial, semântica, SEO, imagens e destino único do WhatsApp.
+- `analise/analise.css`: estilo exclusivo da landing; não carregado pela homepage.
+- `analise/analise.js`: distribuição do link do WhatsApp e evento de intenção de contato.
+- `assets/striker/analise/`: dez imagens WebP com transparência.
+- `docs/landing-analise-copy.md`: transcrição do conteúdo final para revisão.
 
-## Visual e responsividade
+Nesta revisão não foram alterados `index.html`, `styles.css`, `script.js` nem `server.cjs` globais. Hashes conferidos antes/depois. A rota local já existente aceita `/analise` e `/analise/`.
 
-- Navy #03111C, cyan #26D7FF, branco e off-white #F6F8FA.
-- Header branco; hero com curvas de marca em CSS; painel de conversão branco; bloco claro arredondado de confiança e provas; restante escuro com faixa clara de FAQ.
-- Arial/Helvetica já utilizadas no projeto; sem nova fonte remota.
-- Conteúdo até 1.120 px; margens de 20 px no celular; seções com 60 px de respiro mobile e 85 px desktop.
-- H1 38–62 px, H2 30–50 px e corpo 14–17 px. Cyan pontual e títulos com trechos destacados.
-- CTAs arredondados de no mínimo 58 px; o CTA do painel tem cantos discretos.
-- Mobile em uma coluna, abas quebram em linhas, áreas de arte se reorganizam. Desktop em duas colunas no hero/posicionamento/processo, quatro cartões de público e duas avaliações por linha.
-- Sem carrossel automático, animação contínua ou dependência de hover. Transições respeitam movimento reduzido.
+## Assets
 
-## Preencher imagens e provas reais
+Os arquivos originais não foram modificados. Conversão para WebP preservou o canal alpha. Total dos dez assets otimizados: 641.774 bytes (cerca de 642 KB). Dimensões declaradas no HTML, prioridade para composição do Hero e lazy loading abaixo da dobra.
 
-Prévia com áreas reservadas: http://127.0.0.1:4173/analise?preview=assets
+| Arquivo | Asset original (sufixo) | Uso |
+|---|---|---|
+| logo.webp | 15_36_01-1.png | Header e rodapé |
+| dashboard.webp | 15_36_04-2.png | Hero e fechamento |
+| analysis-cards.webp | 15_36_07-3.png | Composição do Hero |
+| client-research.webp | 15_36_10-4.png | Percepção antes da conversa |
+| google-phone.webp | 15_36_13-5.png | O que a Striker analisa |
+| discover.webp | 15_36_16-6.png | Descobre |
+| research.webp | 15_36_19-7.png | Pesquisa |
+| understand.webp | 15_36_21-8.png | Entende |
+| trust.webp | 15_36_24-9.png | Confia |
+| contact.webp | 15_36_28-10.png | Entra em contato |
 
-Versão sem marcadores: http://127.0.0.1:4173/analise
+Os smartphones e cards contêm dados e estados fictícios incorporados às imagens. Legendas próximas explicam que são simulações; não foram apresentados como resultados, seguidores, clientes ou diagnósticos reais. Os endereços dentro do mockup de busca também são ilustrativos, não links da página. Não há depoimentos ou provas sociais inventadas.
 
-O parâmetro de prévia é apenas um recurso de revisão visual; não é autenticação. Não há dados privados nesses espaços.
+## WhatsApp e mensuração
 
-### Foto principal
+O número existente foi reutilizado: +55 54 99910-2656. Número e mensagem estão definidos uma única vez no link `#whatsapp-destination` no HTML. O JavaScript lê esse destino e o aplica a todos os CTAs, evitando constantes divergentes e alterações no script global.
 
-No início de `analise/analise.js`, preencher `ANALISE_CONTENT.teamImage` com o caminho da imagem e `teamImageAlt` com uma descrição verdadeira. Sugestão: WebP/AVIF convertido para WebP se necessário pela hospedagem atual, proporção aproximada de 4:5, 900 × 1.100 px. O servidor atual reconhece WebP. Enquadrar o assunto no centro, evitando texto na imagem; o rodapé visual já identifica a Striker. A arte tipográfica continua como fallback caso a imagem não seja carregada.
+Mensagem: “Olá, vim pela análise da Striker e gostaria de entender o que posso melhorar na presença digital da minha empresa.”
 
-### Avaliações
+Todo CTA tem `data-event="analise_whatsapp_click"` e `data-placement`. Um `CustomEvent` com esse nome é disparado uma vez por clique, com `placement` e `page`, sem dados pessoais. Não há analytics/Meta Pixel detectado na implementação existente; nenhuma ferramenta foi adicionada. O evento não chega a uma plataforma até que uma integração seja configurada. Clique não equivale a lead ou conversa recebida.
 
-Preencher o array `ANALISE_CONTENT.reviews` com objetos contendo:
+Sem JavaScript, os CTAs intermediários levam à seção final e o botão final abre diretamente o WhatsApp; o FAQ continua nativo. Nenhum formulário armazena ou envia dados.
 
-- `quote`: texto literal do relato aprovado;
-- `name`: nome autorizado do cliente;
-- `company`: empresa/cargo;
-- `sourceUrl`: link opcional do relato original;
-- `photo`: caminho opcional da foto autorizada (quadrada, cerca de 160 × 160 px).
+## Visual e comportamento
 
-Não existem notas, estrelas, porcentagens ou nomes fictícios. Ao inserir os relatos completos, os cartões reais substituem automaticamente os espaços reservados. O conteúdo é inserido como texto, não HTML.
+Navy #03111C/#071423, cyan #26D7FF, off-white #F4FAFD. Arial/Helvetica do projeto, peso 700 nas headlines, max-width 1.240 px. Grid de aproximadamente 45/55 no Hero, imagens fornecidas em composição sobreposta, seções claras e escuras, respiro de 72 px no mobile e 105 px no desktop. Jornada horizontal no desktop e vertical no celular. Sem biblioteca adicional, animação contínua, vídeo ou scroll-jacking. Movimento reduzido remove transições.
 
-### Logos
+## Validação
 
-Preencher `ANALISE_CONTENT.logos` com `{ src, name }` de empresas realmente atendidas, com autorização de uso. Preferir SVG ou PNG/WebP transparente, legível sobre fundo claro. Os arquivos devem ficar em `/assets/striker/analise/` (criar a pasta ao adicionar os materiais).
+Verificadas no navegador: 360×800, 375×812, 390×844, 412×915, 430×932, 1366×768, 1440×900, 1536×864 e 1920×1080. Em todas, ausência de overflow horizontal, CTA do Hero na primeira tela e alvos CTA de pelo menos 44 px.
 
-### Artes das abas e fundo
+FAQ abre por clique e fecha pelo teclado. Imagens carregadas; âncoras resolvidas; console sem erros/avisos durante a inspeção. Todos os links de WhatsApp têm número e mensagem exatos. Teste isolado do script confirmou configuração única e um evento por clique. Recursos locais e rota retornam HTTP 200. Pares principais de texto/fundo tiveram contraste medido entre 5,48:1 e 10,87:1. Isso não substitui auditoria formal de acessibilidade.
 
-O HTML contém pontos identificados por `data-asset-slot="google"`, `instagram`, `site` e `whatsapp`. Substituir a região `.channel-visual` por uma imagem com dimensões explícitas e texto alternativo adequado; manter heading e texto em HTML. Recomenda-se arte sem textos essenciais, aproximadamente 1.200 × 600 px, com conteúdo principal centralizado para mobile. As figuras atuais são ilustrações tipográficas, não certificações ou vínculos com plataformas.
+## Entrega
 
-A `.hero-art` pode receber uma imagem de fundo futura em CSS. A versão atual usa apenas gradientes e curvas, sem downloads ou imagens quebradas. Não remover o contraste necessário para ler a copy.
-
-## Implementação
-
-Somente `analise/index.html`, `analise/analise.css`, `analise/analise.js` e esta documentação foram reconstruídos nesta revisão. Os arquivos da homepage foram conferidos por hash antes/depois e permanecem iguais. A rota adicionada anteriormente no servidor foi mantida.
-
-Abas: clique, setas esquerda/direita, Home/End e foco gerenciado; sem JS, todos os canais permanecem no HTML. FAQ com `details`/`summary`. Todos os CTAs contêm link e mensagem do WhatsApp no próprio HTML. Provas e imagens configuráveis têm validação básica de URL e conteúdo textual; não há envio de dados ou cookies.
-
-Evento existente `striker:analise-whatsapp` preservado com `placement` e `page`. Ele sinaliza intenção de saída, não lead confirmado. Não há Pixel/GA4 integrado nesta entrega.
-
-## Validação desta revisão
-
-Navegador em 320, 360, 390, 768, 1024 e 1440 px: sem overflow horizontal; CTAs iniciais visíveis nas alturas verificadas; sem imagens quebradas. Abas verificadas por clique e teclado (Home/End); FAQ abre por interação; todos os CTAs apontam ao número já utilizado no site. Modo normal oculta placeholders e provas vazias; modo de prévia mostra os espaços reservados. Capturas de desktop, mobile e provas sociais revisadas. JS passou na checagem de sintaxe. Ausência de JS foi revisada pela estrutura estática, sem repetir o teste de navegador com JS desativado nesta revisão.
-
-## Publicação
-
-Branch `landing-analise`, PR de revisão: https://github.com/strikercslago/Striker/pull/1
-
-Não houve merge nem publicação no domínio. A configuração da hospedagem continua fora do repositório; validar `/analise` após deploy, além da mensuração dos anúncios. Não usar `?preview=assets` nos anúncios. Preço, prazo e formato da análise não são anunciados porque não foram confirmados.
+Branch `landing-analise`, PR https://github.com/strikercslago/Striker/pull/1. Sem merge ou deploy. Abrir localmente com `node server.cjs` e acessar http://127.0.0.1:4173/analise. A hospedagem e a integração de métricas devem ser validadas para ativar campanhas; o servidor de desenvolvimento mantém noindex e loopback conforme a configuração já existente.
