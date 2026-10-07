@@ -47,12 +47,8 @@ h1 { font-size: clamp(33px,8.7vw,48px); font-weight: 750; line-height: 1.065; le
 .hero-cards { position: absolute; width: 77%; left: 5%; top: 2%; transform: rotate(-5deg); filter: drop-shadow(0 18px 18px #0007); }
 figcaption { color: #9fb5c3; font-size: 11px; line-height: 1.6; }
 .hero-visual figcaption { max-width: 420px; margin: 10px auto 0; text-align: center; }
-.channel-strip { padding: 30px 0 28px; text-align: center; }
-.channel-strip > p { font-size: 9px; text-transform: uppercase; letter-spacing: .13em; color: #9fb3c0; }
-.channel-strip ul { padding: 0; list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 23px; margin: 19px 0 0; }
-.channel-strip li { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #d2e1e9; }
-.channel-strip svg { width: 18px; height: 18px; }
-.channel-strip li > span { font-size: 20px; }
+.channel-strip { width: 100%; margin: 0; background: #03151f; }
+.channel-strip img { width: 100%; max-width: 1600px; margin-inline: auto; }
 .light { background: var(--paper); color: var(--ink); }
 .light em { color: #075678; }
 .light .eyebrow { color: #416a7f; }
@@ -171,10 +167,6 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 700; letter-spacing: -.025e
   .hero-visual { width: 100%; margin: 0; }
   .hero-stage { max-width: none; width: 100%; }
   .hero-visual figcaption { font-size: 11px; margin-top: 8px; }
-  .channel-strip { padding: 35px 0 33px; }
-  .channel-strip ul { gap: 45px; }
-  .channel-strip li { font-size: 16px; }
-  .channel-strip > p { font-size: 10px; }
   .section { padding-block: 105px; }
   .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 65px; }
   .pain-copy { padding-block: 85px; }
