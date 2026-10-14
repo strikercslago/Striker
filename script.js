@@ -17,11 +17,11 @@ questions.forEach((question) => {
 // Fictional starter data. Replace these records with approved reviews before publication.
 // Keep rendering independent of the data source so a future API/CMS can supply this array.
 const testimonials = [
-  { name: 'Rafael Mendes', company: 'Construtora Horizonte', rating: 5, category: 'Site para construtora', icon: 'building', avatar: 'avatar-1', quote: 'A Striker conseguiu traduzir nossa essência em um site moderno, objetivo e que realmente gera oportunidades.' },
-  { name: 'Marina Costa', company: 'Clínica Viva', rating: 5, category: 'Site para clínica', icon: 'clinic', avatar: 'avatar-2', quote: 'Desde que lançamos nosso site com a Striker, nossa apresentação ficou muito mais profissional e clara.' },
-  { name: 'Lucas Ferreira', company: 'Estúdio Lumos', rating: 5, category: 'Site institucional', icon: 'chat', avatar: 'avatar-3', quote: 'O site transformou a forma como apresentamos nosso trabalho. Hoje o cliente entende muito mais rápido o que fazemos.' },
-  { name: 'Camila Roque', company: 'Loja Bloom', rating: 5, category: 'Loja virtual', icon: 'shop', avatar: 'avatar-4', quote: 'A experiência ficou simples, rápida e profissional. Nossa marca finalmente transmite a qualidade que entregamos.' },
-  { name: 'Thiago Nunes', company: 'Agência Pulsar', rating: 5, category: 'Site para agência', icon: 'agency', avatar: 'avatar-5', quote: 'Atendimento excelente e uma estrutura digital muito melhor para apresentar nossos serviços.' }
+  { name: 'Rafael Mendes', company: 'Construtora Horizonte', rating: 5, category: 'Site para construtora', icon: 'building', quote: 'A Striker conseguiu traduzir nossa essência em um site moderno, objetivo e que realmente gera oportunidades.' },
+  { name: 'Marina Costa', company: 'Clínica Viva', rating: 5, category: 'Site para clínica', icon: 'clinic', quote: 'Desde que lançamos nosso site com a Striker, nossa apresentação ficou muito mais profissional e clara.' },
+  { name: 'Lucas Ferreira', company: 'Estúdio Lumos', rating: 5, category: 'Site institucional', icon: 'chat', quote: 'O site transformou a forma como apresentamos nosso trabalho. Hoje o cliente entende muito mais rápido o que fazemos.' },
+  { name: 'Camila Roque', company: 'Loja Bloom', rating: 5, category: 'Loja virtual', icon: 'shop', quote: 'A experiência ficou simples, rápida e profissional. Nossa marca finalmente transmite a qualidade que entregamos.' },
+  { name: 'Thiago Nunes', company: 'Agência Pulsar', rating: 5, category: 'Site para agência', icon: 'agency', quote: 'Atendimento excelente e uma estrutura digital muito melhor para apresentar nossos serviços.' }
 ];
 
 (() => {
@@ -71,15 +71,13 @@ const testimonials = [
     card.setAttribute('aria-roledescription', 'slide');
     card.setAttribute('aria-label', `Avaliação ${wrap(index) + 1} de ${total}`);
     const person = element('div', 'testimonial-person');
-    const portrait = element('div', 'testimonial-portrait');
-    portrait.append(art(data.avatar, 'testimonial-avatar', 92), art('verified', 'testimonial-verified', 28));
     const identity = element('div', 'testimonial-identity');
     const rating = element('div', 'testimonial-rating');
     rating.setAttribute('role', 'img');
     rating.setAttribute('aria-label', `${data.rating} de 5 estrelas`);
     for (let i = 0; i < data.rating; i++) rating.append(art('star', '', 23));
     identity.append(element('h3', '', data.name), element('p', 'testimonial-company', data.company), rating);
-    person.append(portrait, identity);
+    person.append(identity);
     const category = element('span', 'testimonial-category');
     category.append(art(`category-${data.icon}`, '', 26), element('span', '', data.category));
     card.append(person, element('blockquote', '', `“${data.quote}”`), category);
@@ -298,4 +296,176 @@ const testimonials = [
     });
   });
   configure();
+})();
+
+// Reveal after About, then keep the invitation visible until explicitly dismissed.
+(() => {
+  const about = document.querySelector('#sobre');
+  const dock = document.querySelector('.analysis-dock');
+  if (!about || !dock) return;
+  let revealed = false;
+  let dismissed = false;
+  let frame = 0;
+  function update() {
+    frame = 0;
+    if (!revealed && about.getBoundingClientRect().bottom <= 0) revealed = true;
+    dock.hidden = dismissed || !revealed;
+  }
+  function schedule() { if (!frame) frame = requestAnimationFrame(update); }
+  dock.querySelector('button').addEventListener('click', () => {
+    dismissed = true;
+    dock.hidden = true;
+    document.querySelector('.whatsapp-float').focus({ preventScroll: true });
+  });
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('pageshow', schedule);
+  if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(document.querySelector('main'));
+  update();
+})();
+
+// Portfolio names match the supplied artwork; no public project URLs were supplied.
+const projects = [
+  { id:'nexa-criativa', name:'Nexa Criativa', category:'Agência digital', url:null },
+  { id:'gestor-ia', name:'Gestor IA', category:'Inteligência artificial', url:null },
+  { id:'dr-marcelo-boechat', name:'Dr. Marcelo Boechat', category:'Cirurgia bucomaxilofacial e implantodontia', url:null },
+  { id:'zentore-odonto', name:'Zentore Odonto', category:'Odontologia integrada', url:null },
+  { id:'dentiva', name:'Dentiva', category:'Clínica odontológica', url:null },
+  { id:'qnar-studio', name:'Qnar Studio', category:'Arquitetura e interiores', url:null },
+  { id:'advmarc', name:'ADVMARC', category:'Advocacia', url:null },
+  { id:'ref-adv', name:'REF ADV', category:'Advocacia e consultoria', url:null }
+].map(project => ({ ...project, image:`public/assets/striker/portfolio/${project.id}-800.webp` }));
+
+(() => {
+  const section = document.querySelector('.portfolio-section');
+  if (!section) return;
+  const viewport = section.querySelector('.portfolio-showcase');
+  const track = section.querySelector('.portfolio-track');
+  const dialog = section.querySelector('.portfolio-dialog');
+  const announcement = section.querySelector('.portfolio-announcement');
+  const reduced = matchMedia('(prefers-reduced-motion:reduce)');
+  let cards=[], active=2, paused=false, visible=false;
+  let frame=0, previousTime=0, motionLeft=0, dragging=null, dragged=false, savedOverflow='', opener=null, resumeTimer=0;
+  const wrap = index => (index + projects.length) % projects.length;
+  const node = (tag, className, text) => {
+    const el=document.createElement(tag); el.className=className;
+    if(text!==undefined) el.textContent=text;
+    return el;
+  };
+  function makeCard(project,index,copy) {
+    const card=node('article','portfolio-card');
+    card.dataset.index=index;
+    card.dataset.copy=copy;
+    const img=node('img','portfolio-cover');
+    img.src=project.image;
+    img.srcset=[480,800,1122].map(w=>`public/assets/striker/portfolio/${project.id}-${w}.webp ${w}w`).join(', ');
+    img.sizes='(max-width:600px) 86vw, (max-width:900px) 70vw, (min-width:1800px) 520px, 430px';
+    img.width=1122; img.height=1402; img.loading='lazy'; img.decoding='async'; img.draggable=false;
+    img.alt=`Projeto ${project.name}: apresentação do site em desktop e celular`;
+    const footer=node('div','portfolio-card-footer');
+    const identity=node('div','');
+    identity.append(node('h3','',project.name),node('p','',project.category));
+    const open=node(project.url?'a':'button','portfolio-open');
+    if(project.url) { open.href=project.url; open.target='_blank'; open.rel='noopener noreferrer'; }
+    else { open.type='button'; open.addEventListener('click',()=>openProject(project,open)); }
+    open.setAttribute('aria-label',`Ver projeto ${project.name}`);
+    open.append(node('span','portfolio-open-label','Ver projeto'),node('span','portfolio-open-arrow','→'));
+    open.lastChild.setAttribute('aria-hidden','true');
+    footer.append(identity,open); card.append(img,footer);
+    if(copy!==1) { card.setAttribute('aria-hidden','true'); open.tabIndex=-1; }
+    return card;
+  }
+  function center(card) { return card.offsetLeft + card.offsetWidth/2 - viewport.clientWidth/2; }
+  function render() {
+    track.replaceChildren();
+    const copies=[0,1,2];
+    copies.forEach(copy=>projects.forEach((project,index)=>track.append(makeCard(project,index,copy))));
+    cards=Array.from(track.children);
+    viewport.scrollLeft=center(cards.find(card=>Number(card.dataset.copy)===1&&Number(card.dataset.index)===active));
+    sync(); updateMotion();
+  }
+  function nearest() {
+    return cards.reduce((best,card)=>Math.abs(center(card)-viewport.scrollLeft)<Math.abs(center(best)-viewport.scrollLeft)?card:best,cards[0]);
+  }
+  function sync() {
+    const selected=nearest();
+    active=Number(selected.dataset.index);
+    cards.forEach(card=>{
+      card.classList.toggle('is-active',card===selected);
+      if(card.dataset.copy!=='1') {
+        card.querySelector('.portfolio-open').tabIndex=card===selected?0:-1;
+        card.setAttribute('aria-hidden',String(card!==selected));
+      }
+      if(visible&&Math.abs(center(card)-viewport.scrollLeft)<viewport.clientWidth) card.querySelector('img').loading='eager';
+    });
+  }
+  function stop() { clearTimeout(resumeTimer); paused=true; updateMotion(); }
+  function resumeLater() { clearTimeout(resumeTimer); resumeTimer=setTimeout(()=>{paused=false;updateMotion();},2000); }
+  function normalize() {
+    const first=cards.find(card=>card.dataset.copy==='1');
+    const next=cards.find(card=>card.dataset.copy==='2');
+    const span=center(next)-center(first);
+    let shift=0;
+    if(viewport.scrollLeft>=center(next)) shift=-span;
+    else if(viewport.scrollLeft<center(first)) shift=span;
+    if(shift) {viewport.scrollLeft+=shift;motionLeft+=shift;if(dragging)dragging.left+=shift;}
+  }
+  function navigate(direction) {
+    stop();
+    active=wrap(Number(nearest().dataset.index)+direction);
+    const target=cards.find(card=>Number(card.dataset.copy)===1&&Number(card.dataset.index)===active);
+    viewport.scrollTo({left:center(target),behavior:reduced.matches?'instant':'smooth'});
+    announcement.textContent=`${active+1} de ${projects.length}: ${projects[active].name}`;
+    resumeLater();
+  }
+  function tick(now) {
+    if(previousTime) {
+      motionLeft+=Math.min(now-previousTime,64)*.012;
+      viewport.scrollLeft=motionLeft;
+      normalize();
+    }
+    previousTime=now;
+    frame=requestAnimationFrame(tick);
+  }
+  function updateMotion() {
+    cancelAnimationFrame(frame); frame=0; previousTime=0; motionLeft=viewport.scrollLeft;
+    if(!reduced.matches&&!paused&&!dragging&&visible&&!document.hidden&&!dialog.open) frame=requestAnimationFrame(tick);
+  }
+  function openProject(project,button) {
+    stop(); opener=button;
+    dialog.querySelector('h3').textContent=project.name;
+    dialog.querySelector('.portfolio-dialog-category').textContent=project.category;
+    const img=dialog.querySelector('.portfolio-detail');
+    img.src=`public/assets/striker/portfolio/${project.id}-1122.webp`;
+    img.alt=`Projeto completo ${project.name}, versões desktop e celular`;
+    savedOverflow=document.body.style.overflow;
+    document.body.style.overflow='hidden';
+    dialog.showModal();
+    dialog.querySelector('.portfolio-dialog-body').scrollTop=0;
+  }
+  section.querySelector('.portfolio-close').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',event=>{ if(event.target===dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close(); } });
+  dialog.addEventListener('close',()=>{ document.body.style.overflow=savedOverflow; opener?.focus({preventScroll:true}); resumeLater(); });
+  viewport.addEventListener('scroll',()=>{normalize();sync();},{passive:true});
+  viewport.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();navigate(event.key==='ArrowRight'?1:-1);}});
+  viewport.addEventListener('wheel',()=>{stop();resumeLater();},{passive:true});
+  viewport.addEventListener('pointerdown',event=>{
+    stop(); dragged=false;
+    if(event.button===0)dragging={x:event.clientX,y:event.clientY,left:viewport.scrollLeft,id:event.pointerId};
+  });
+  viewport.addEventListener('pointermove',event=>{
+    if(!dragging)return;
+    const delta=event.clientX-dragging.x;
+    if(!dragged&&Math.abs(event.clientY-dragging.y)>Math.abs(delta)&&Math.abs(event.clientY-dragging.y)>6){release();return;}
+    if(Math.abs(delta)>6) { dragged=true;viewport.setPointerCapture(event.pointerId);viewport.classList.add('is-dragging'); }
+    if(dragged){viewport.scrollLeft=dragging.left-delta;normalize();}
+  });
+  const release=()=>{if(!dragging)return;dragging=null;viewport.classList.remove('is-dragging');resumeLater();};
+  viewport.addEventListener('pointerup',release); viewport.addEventListener('pointercancel',release); viewport.addEventListener('lostpointercapture',release);
+  viewport.addEventListener('click',event=>{if(dragged){event.preventDefault();event.stopPropagation();dragged=false;}},true);
+  document.addEventListener('visibilitychange',updateMotion);
+  reduced.addEventListener('change',updateMotion);
+  new ResizeObserver(()=>{ if(!dragging){viewport.scrollLeft=center(cards.find(card=>card.dataset.copy==='1'&&Number(card.dataset.index)===active));updateMotion();} }).observe(viewport);
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();updateMotion();},{threshold:.1}).observe(viewport);
+  render();
 })();
